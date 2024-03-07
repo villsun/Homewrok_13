@@ -4,6 +4,37 @@
 
 using namespace std;
 
+void Сaesars_Сipher(FILE* p_file_1, FILE* p_file_2)
+{
+	char c_file_1;
+
+	do
+	{
+		c_file_1 = fgetc(p_file_1);
+		if (c_file_1 == '\n')
+		{
+			fprintf(p_file_2, "\n");
+		}
+		else if (c_file_1 == ' ')
+		{
+			fprintf(p_file_2, " ");
+		}
+		else if (c_file_1 == ',')
+		{
+			fprintf(p_file_2, ",");
+		}
+		else if (c_file_1 == '.')
+		{
+			fprintf(p_file_2, ".");
+		}
+		else
+		{
+			fprintf(p_file_2, "%c", c_file_1 + 3);
+		}
+	} while (c_file_1 != EOF);
+}
+
+
 int main()
 {
 	// Завдання 1
@@ -41,7 +72,7 @@ int main()
 
 	// Завдання 2
 
-	FILE* p_file_1 = fopen(R"(D:\file_1.txt)", "r");
+	/*FILE* p_file_1 = fopen(R"(D:\file_1.txt)", "r");
 	FILE* p_file_2 = fopen(R"(D:\file_3.txt)", "w");
 	char c_file_1;
 	int counter_1 = 0;
@@ -73,6 +104,16 @@ int main()
 	} while (c_file_1 != EOF);
 
 	fprintf(p_file_2, "%i\n%i\n%i\n%i\n%i\n", counter_1, counter_2, counter_3, counter_4, counter_5);
+
+	fclose(p_file_1);
+	fclose(p_file_2);*/
+
+	// Завдання 3
+
+	FILE* p_file_1 = fopen(R"(F:\file_1.txt)", "r");
+	FILE* p_file_2 = fopen(R"(F:\file_4.txt)", "w");
+	
+	Сaesars_Сipher(p_file_1, p_file_2);
 
 	fclose(p_file_1);
 	fclose(p_file_2);
